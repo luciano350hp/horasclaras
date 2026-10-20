@@ -34,6 +34,41 @@ Texual del material de clases:
 
 ---
 
+## ANTES DE EMPEZAR: cómo se levanta el "servidor" (leer esto primero)
+
+**¿Qué es el servidor?** El backend de HorasClaras no es una app con ventana. Es un **programa que se queda escuchando** en tu PC, esperando pedidos web. Mientras está encendido, la dirección `http://127.0.0.1:8000/docs` funciona. Si está apagado, esa dirección **no existe** y el navegador da error. **Ese es el "servidor".**
+
+**¿Dónde se escribe el comando?** En una **consola de PowerShell**. Para abrir una: tecla **Windows + R** → escribí `powershell` → Enter. O si ya tenés OpenCode abierto, usá su terminal.
+
+**Paso a paso:**
+
+1. Abrí la consola y **entrá a la carpeta del proyecto**:
+   ```powershell
+   cd C:\Users\Napo\Documents\HorasClaras
+   ```
+
+2. **Encendé el servidor** con este comando:
+   ```powershell
+   .\.venv\Scripts\python.exe -m uvicorn app.main:app --reload
+   ```
+
+3. Vas a ver esto y **se va a quedar ahí** (no se cuelga, está funcionando):
+   ```
+   INFO:     Uvicorn running on http://127.0.0.1:8000  (Press CTRL+C to quit)
+   INFO:     Application startup complete.
+   ```
+
+4. **NO cierres esa consola.** Dejala abierta. Ahora, en el **navegador**, abrí:
+   ```
+   http://127.0.0.1:8000/docs
+   ```
+
+5. Cuando termines la demo, para apagarlo: en esa consola apretá **`Ctrl + C`**.
+
+**Si `/docs` no anda:** es porque el paso 2 no está corriendo. La causa #1 es que la consola no está en la carpeta del proyecto (paso 1). La causa #2 es que cerraste la consola o apretaste `Ctrl + C`. Volvé a encenderlo.
+
+---
+
 ## Estructura de la demo (5 minutos)
 
 ### 1. Apertura — la frase que resume todo (15 seg)
@@ -42,13 +77,14 @@ Texual del material de clases:
 
 ### 2. La app funciona — `/docs` en vivo (60 seg)
 
-Abrir el servidor y mostrar:
+**Primero encendé el servidor** (si no lo hiciste, ver la sección "ANTES DE EMPEZAR" arriba):
 
 ```powershell
+cd C:\Users\Napo\Documents\HorasClaras
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --reload
 ```
 
-Abrir **http://127.0.0.1:8000/docs**
+**Después abrí el navegador** en **http://127.0.0.1:8000/docs**
 
 Demostrar en vivo (3 acciones):
 1. Crear un cliente de tipo `hora` → devuelve **201**
