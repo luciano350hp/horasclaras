@@ -14,3 +14,6 @@ data/
 setup_horasclaras.ps1
 # material del curso (no es parte de la entrega)
 Curso IA Engineering.md
+
+# cache generado por gentle-ai
+.atl/
