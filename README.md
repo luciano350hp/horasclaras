@@ -169,6 +169,8 @@ Plan  ->  specs  ->  Build  ->  pytest  ->  revisor  ->  aprobar / archivar
   - `crear-caso-de-uso`: el orden de capas y tests para agregar un CU.
   - `reglas-tarifas`: las fórmulas de cobro por hora y por palabra.
 - **Agente `revisor`** (`.opencode/agents/revisor.md`): solo lectura (`permission: {edit: deny, bash: deny}`). Audita acoplamiento, tipos, uso de `Decimal` y cobertura de tests.
+- **Agente `backend`** (`.opencode/agents/backend.md`): especializado en el backend (`app/`). Sigue la arquitectura de 5 capas, SQLAlchemy 2.0.x, Pydantic v2 y las reglas de `AGENTS.md`.
+- **Agente `frontend`** (`.opencode/agents/frontend.md`): especializado en el frontend **React + Vite**. Consume la API y respeta que las reglas de negocio viven en el backend.
 - **`.aisignore`** y **`.gitignore`**: firewall de contexto. Excluyen `.env`, `.venv`, bases `*.db`, `node_modules` y caches, para que nunca se indexen ni se suban.
 
 ## MCP configurados (`opencode.json`)
@@ -176,9 +178,11 @@ Plan  ->  specs  ->  Build  ->  pytest  ->  revisor  ->  aprobar / archivar
 | Servidor | Tipo | Rol en el desarrollo |
 |---|---|---|
 | `filesystem` | Interno (local, vía `cmd /c npx`) | Leer y escribir **solo dentro** de la carpeta del proyecto (ruta absoluta permitida) |
+| `engram` | Interno (local) | Memoria persistente entre sesiones: recuperar decisiones y contexto sin releer el repo |
+| `memory` | Interno (local) | Grafo de conocimiento del proyecto |
 | `context7` | **Externo** (remoto, `https://mcp.context7.com/mcp`) | Consultar documentación actualizada de FastAPI, SQLAlchemy y Pydantic para no usar APIs obsoletas |
 
-Mínimo exigido: 2 servidores, al menos 1 externo. **Cumplido.**
+Mínimo exigido: 2 servidores, al menos 1 externo. **Cumplido** (4 servidores, 1 externo).
 
 ## Metodología (SDD con OpenSpec)
 
