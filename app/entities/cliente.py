@@ -24,5 +24,5 @@ class Cliente(Base):
     tipo: Mapped[TipoCliente] = mapped_column(nullable=False)
     tarifa: Mapped[Decimal] = mapped_column(Numeric(10, 2), nullable=False)
     descuento_repeticion: Mapped[Decimal] = mapped_column(
-        Numeric(5, 2), nullable=False, default=Decimal("0.00")
+        Numeric(5, 2), nullable=False, default=Decimal("50.00")
     )

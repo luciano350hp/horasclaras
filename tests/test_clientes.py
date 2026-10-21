@@ -171,3 +171,35 @@ def test_health(client: TestClient) -> None:
 
     assert respuesta.status_code == 200
     assert respuesta.json() == {"estado": "ok"}
+
+def test_descuento_por_defecto_es_50(client: TestClient) -> None:
+    payload = crear_cliente_payload()
+    del payload["descuento_repeticion"]
+
+    respuesta = client.post("/api/clientes/", json=payload)
+
+    assert respuesta.status_code == 201
+    assert respuesta.json()["descuento_repeticion"] == "50.00"
+
+
+def test_maximo_de_clientes_devuelve_409(client: TestClient) -> None:
+    for i in range(10):
+        respuesta = client.post("/api/clientes/", json=crear_cliente_payload(nombre=f"Cliente {i}"))
+        assert respuesta.status_code == 201
+
+    respuesta = client.post("/api/clientes/", json=crear_cliente_payload(nombre="Cliente 11"))
+
+    assert respuesta.status_code == 409
+    assert "10 clientes" in respuesta.json()["detail"]
+
+
+def test_se_pueden_eliminar_y_crear_de_nuevo(client: TestClient) -> None:
+    for i in range(10):
+        client.post("/api/clientes/", json=crear_cliente_payload(nombre=f"Cliente {i}"))
+    creado = client.get("/api/clientes/").json()[0]
+
+    assert client.delete(f"/api/clientes/{creado['id']}").status_code == 204
+
+    respuesta = client.post("/api/clientes/", json=crear_cliente_payload(nombre="Cliente nuevo"))
+
+    assert respuesta.status_code == 201

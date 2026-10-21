@@ -5,6 +5,8 @@ from sqlalchemy.orm import Session
 from app.dtos.cliente_dto import ClienteCreate, ClienteRead, ClienteUpdate
 from app.repositories.cliente_repository import ClienteRepository
 
+MAXIMO_CLIENTES = 10
+
 
 class ClienteService:
     def __init__(self, repository: ClienteRepository | None = None) -> None:
@@ -26,6 +28,11 @@ class ClienteService:
         nombre = self._normalizar(datos.nombre)
         if self.repository.obtener_por_nombre(db, nombre) is not None:
             raise self._duplicado(nombre)
+        if self.repository.contar(db) >= MAXIMO_CLIENTES:
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail=f"No se pueden tener mas de {MAXIMO_CLIENTES} clientes",
+            )
         try:
             creado = self.repository.crear(db, {**datos.model_dump(), "nombre": nombre})
         except IntegrityError:

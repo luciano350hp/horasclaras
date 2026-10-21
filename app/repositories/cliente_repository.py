@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.entities.cliente import Cliente
@@ -8,6 +8,9 @@ class ClienteRepository:
     def listar(self, db: Session, skip: int = 0, limit: int = 100) -> list[Cliente]:
         stmt = select(Cliente).order_by(Cliente.id).offset(skip).limit(limit)
         return list(db.execute(stmt).scalars().all())
+
+    def contar(self, db: Session) -> int:
+        return db.execute(select(func.count()).select_from(Cliente)).scalar_one()
 
     def obtener_por_id(self, db: Session, cliente_id: int) -> Cliente | None:
         return db.get(Cliente, cliente_id)

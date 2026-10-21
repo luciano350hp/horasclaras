@@ -1,4 +1,4 @@
-# HorasClaras
+﻿# HorasClaras
 
 Sistema de gestión de horas y tarifas para profesionales freelance (profesoras de idiomas y traductoras).
 
@@ -179,10 +179,9 @@ Plan  ->  specs  ->  Build  ->  pytest  ->  revisor  ->  aprobar / archivar
 |---|---|---|
 | `filesystem` | Interno (local, vía `cmd /c npx`) | Leer y escribir **solo dentro** de la carpeta del proyecto (ruta absoluta permitida) |
 | `engram` | Interno (local) | Memoria persistente entre sesiones: recuperar decisiones y contexto sin releer el repo |
-| `memory` | Interno (local) | Grafo de conocimiento del proyecto |
 | `context7` | **Externo** (remoto, `https://mcp.context7.com/mcp`) | Consultar documentación actualizada de FastAPI, SQLAlchemy y Pydantic para no usar APIs obsoletas |
 
-Mínimo exigido: 2 servidores, al menos 1 externo. **Cumplido** (4 servidores, 1 externo).
+Mínimo exigido: 2 servidores, al menos 1 externo. **Cumplido** (3 servidores en el proyecto, 1 externo).
 
 ## Metodología (SDD con OpenSpec)
 

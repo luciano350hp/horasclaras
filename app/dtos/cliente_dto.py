@@ -14,7 +14,7 @@ class ClienteBase(BaseModel):
     tipo: TipoCliente
     tarifa: Decimal = Field(gt=0, max_digits=10, decimal_places=2)
     descuento_repeticion: Decimal = Field(
-        default=Decimal("0.00"), ge=0, le=100, max_digits=5, decimal_places=2
+        default=Decimal("50.00"), ge=0, le=100, max_digits=5, decimal_places=2
     )
 
 

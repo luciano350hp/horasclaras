@@ -1,4 +1,4 @@
-# Demo HorasClaras — Guion para la clase
+﻿# Demo HorasClaras — Guion para la clase
 
 **TP: IA Engineering — Cohorte 2, UNLa**
 **Alumno: Luciano Napoleone**
@@ -99,7 +99,7 @@ Demostrar en vivo (3 acciones):
 .\.venv\Scripts\python.exe -m pytest
 ```
 
-> *"41 tests en verde: 27 de clientes y 14 de horas. Cubren el caso feliz y los errores 404, 409 y 422."*
+> *"44 tests en verde: 27 de clientes y 14 de horas. Cubren el caso feliz y los errores 404, 409 y 422."*
 
 ### 4. El setup de IA — **EL CORAZÓN DE LA DEMO** (2 min)
 
