@@ -201,8 +201,9 @@ El flujo de OpenSpec es: **proponer** un cambio (qué y por qué) → escribir s
 
 ### Cómo se construyó realmente
 
-- **Con OpenCode y OpenSpec:** el setup de IA, CU-02 (clientes) y CU-03 (horas, con su especificación en `openspec/changes/cu-03-registro-horas/`).
-- **Con Claude (asistente de chat), directamente sobre el código:** CU-01 y CU-04 a CU-10, el frontend completo y el asistente virtual, después de que el cupo gratuito de OpenCode se agotó. Estos casos de uso no pasaron por OpenSpec.
+- **Con OpenCode:** el setup de IA, CU-02 (clientes) y CU-03 (horas). CU-03 se hizo con OpenSpec desde el principio: su especificación original está en `openspec/changes/archive/2026-10-21-cu-03-registro-horas/`.
+- **Con Claude (asistente de chat), directamente sobre el código:** CU-01 y CU-04 a CU-10, el frontend completo y el asistente virtual, después de que el cupo gratuito de OpenCode se agotó.
+- **Especificaciones retroactivas:** CU-01, CU-02 y CU-04 a CU-10 no tenían especificación. Se escribieron el 24/10 *después* de implementarlas y probarlas, describiendo el comportamiento real. Cada una lo dice en su `proposal.md` y su `.openspec.yaml` (`retroactive: true`). Todas están archivadas y sus requisitos publicados en `openspec/specs/`.
 
 Esta distinción se deja escrita a propósito, para que el trabajo sea transparente.
 
@@ -241,7 +242,7 @@ horasclaras/
 - **El servidor acepta pedidos de cualquier origen** (CORS abierto). Está bien para desarrollo; en producción se restringe.
 - **La base es SQLite**, un solo archivo. Alcanza para una persona; para muchas usuarias se pasaría a PostgreSQL.
 - **El asistente no ve tus datos.** Solo explica cómo funciona la app.
-- **Faltan las especificaciones de OpenSpec** de los CU construidos sin OpenSpec, y archivar el cambio de CU-03.
+- **Las especificaciones de la mayoría de los CU son retroactivas** (escritas después del código). Para los casos de uso nuevos conviene seguir el flujo real: proponer, especificar, implementar, archivar.
 - **Pendiente de probar en la computadora del autor:** el asistente con una clave real de Groq y el modelo de embeddings multilingüe.
 
 ## 12. Glosario
