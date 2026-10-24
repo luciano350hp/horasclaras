@@ -6,6 +6,8 @@ Sistema de gestión de horas y tarifas para profesionales freelance (profesoras 
 
 El proyecto se desarrolla con **Spec-Driven Development (SDD)** y un entorno de contexto armado para el agente (reglas, skills, agentes y MCP). Las reglas de trabajo del agente están en `AGENTS.md`; las especificaciones de cada caso de uso, en `openspec/`.
 
+> 📘 **Documentación completa en lenguaje simple:** [`docs/DOCUMENTACION.md`](docs/DOCUMENTACION.md)
+
 ## Stack
 
 Python 3.14 · FastAPI · SQLAlchemy 2.0 · SQLite · Pydantic v2 · pytest
