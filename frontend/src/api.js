@@ -31,6 +31,7 @@ export const api = {
   borrarTraduccion: (id) => pedir(`/api/traducciones/${id}`, { method: "DELETE" }),
   calculo: (mes) => pedir(`/api/calculos/${mes}`),
   dashboard: (mes) => pedir(`/api/dashboard/${mes}`),
+  chat: (mensaje, conversation_id) => post("/api/chat", { mensaje, conversation_id }),
   waitlist: (email) => post("/api/waitlist", { email }),
   urlPdf: (nombre) => `${BASE}/api/tarifario/pdf?profesional=${encodeURIComponent(nombre || "")}`,
 };

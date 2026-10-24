@@ -7,6 +7,7 @@ import Calculo from "./pages/Calculo.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Tarifario from "./pages/Tarifario.jsx";
 import Waitlist from "./pages/Waitlist.jsx";
+import Asistente from "./pages/Asistente.jsx";
 import Login from "./pages/Login.jsx";
 
 const TABS = [
@@ -16,6 +17,7 @@ const TABS = [
   ["traducciones", "Traducciones", Traducciones],
   ["calculo", "Cobro del mes", Calculo],
   ["tarifario", "Tarifario PDF", Tarifario],
+  ["asistente", "Asistente", Asistente],
   ["waitlist", "Lista de espera", Waitlist],
 ];
 

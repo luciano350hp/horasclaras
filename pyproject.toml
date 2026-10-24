@@ -10,6 +10,13 @@ dependencies = [
     "pydantic>=2",
     "pydantic-settings",
     "reportlab",
+    "langchain",
+    "langchain-groq",
+    "langchain-chroma",
+    "langchain-community",
+    "langchain-text-splitters",
+    "chromadb",
+    "fastembed",
 ]
 
 [project.optional-dependencies]

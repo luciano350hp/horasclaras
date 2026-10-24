@@ -6,3 +6,11 @@ pydantic-settings
 pytest
 reportlab
 httpx
+langchain
+langchain-core
+langchain-groq
+langchain-chroma
+langchain-community
+langchain-text-splitters
+chromadb
+fastembed

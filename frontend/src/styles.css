@@ -25,3 +25,10 @@ th { background: #eef3f8; }
 .barra { display: grid; grid-template-columns: 140px 1fr 110px; gap: 8px; align-items: center; margin: 6px 0; font-size: 14px; }
 .barra div { background: #eef3f8; height: 14px; border-radius: 7px; } .barra i { display: block; height: 100%; background: var(--azul); border-radius: 7px; }
 .login { max-width: 340px; margin: 80px auto; display: flex; flex-direction: column; gap: 10px; }
+
+.chat { display: flex; flex-direction: column; gap: 8px; max-height: 420px; overflow-y: auto; margin-bottom: 10px; }
+.burbuja { padding: 8px 12px; border-radius: 12px; max-width: 80%; white-space: pre-wrap; font-size: 14px; }
+.burbuja.user { background: var(--azul); color: #fff; align-self: flex-end; }
+.burbuja.assistant { background: #eef3f8; align-self: flex-start; }
+.burbuja small { display: block; margin-top: 4px; color: #667; }
+.fila input.ancho { flex: 1; min-width: 200px; }

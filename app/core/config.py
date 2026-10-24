@@ -15,6 +15,11 @@ class Settings(BaseSettings):
     secret_key: str = "cambiar-en-produccion-usar-.env"
     token_horas_validez: int = 24
 
+    groq_api_key: str = ""
+    groq_model: str = "openai/gpt-oss-20b"
+    embeddings_backend: str = "fastembed"  # "fastembed" o "hash" (sin descargas)
+    chroma_dir: str = str(BASE_DIR / "data" / "chroma")
+
     database_url: str = f"sqlite:///{BASE_DIR / 'horasclaras.db'}"
 
     @property

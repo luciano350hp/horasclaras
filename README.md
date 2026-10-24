@@ -59,7 +59,7 @@ openspec/                   # specs (SDD)
 | CU-07 | Tarifario PDF | **implementado** (back + front) |
 | CU-08 | Dashboard mensual | **implementado** (back + front) |
 | CU-09 | Lista de espera | **implementado** (back + front) |
-| CU-10 | Asistente virtual (chatbot) | pendiente |
+| CU-10 | Asistente virtual (chatbot) | **implementado** (back + front) |
 
 ### Reglas de dominio
 
@@ -92,6 +92,19 @@ npm run dev
 ```
 
 Abrir http://localhost:5173 (el backend tiene que estar corriendo en el puerto 8000). Pantallas: login/registro, dashboard, clientes, horas, traducciones, cobro del mes, tarifario PDF y lista de espera.
+
+## Asistente virtual (CU-10)
+
+RAG con **LangChain + Groq + Chroma** (base vectorial). Los documentos de `knowledge/*.md` se parten en fragmentos, se indexan en Chroma (`data/chroma`, se crea sola en la primera pregunta) y, por cada pregunta, se recuperan los 4 fragmentos más parecidos y se le pasan a Groq como contexto. El historial se guarda en SQLite por `conversation_id`.
+
+Para activarlo hace falta una clave gratis de https://console.groq.com. Se pone en `.env` (nunca se sube):
+
+```
+GROQ_API_KEY=tu_clave
+GROQ_MODEL=openai/gpt-oss-20b
+```
+
+Embeddings: `fastembed` (modelo multilingüe local, se descarga la primera vez). Si no se puede descargar, usa un plan B local por hash (`EMBEDDINGS_BACKEND=hash` fuerza ese modo). Sin `GROQ_API_KEY` el endpoint responde 503 con un mensaje claro. Los tests usan un LLM falso, así que no gastan cuota.
 
 ## Tests
 
@@ -133,6 +146,8 @@ DATABASE_URL=sqlite:///./horasclaras.db
 | POST/GET | `/api/waitlist` | Anotarse en la lista de espera (409 si el email ya existe) |
 | POST | `/api/auth/registro` · `/api/auth/login` | Crear cuenta / obtener token |
 | GET | `/api/auth/me` | Usuario del token |
+| POST | `/api/chat` | Preguntarle al asistente (`mensaje`, `conversation_id` opcional) |
+| GET | `/api/chat/{conversation_id}` | Historial de una conversación |
 
 ```json
 {
