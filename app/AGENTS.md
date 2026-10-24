@@ -36,3 +36,11 @@ controller -> service -> repository -> entity (SQLAlchemy)
 3. Agregar tests en `tests/test_<recurso>.py`
 4. Verificar con `.\.venv\Scripts\python.exe -m pytest` (salida real)
 5. No commitear sin pedido
+
+## Casos de uso agregados (CU-01, 04–10)
+- **Auth (CU-01):** contraseñas con PBKDF2 (nunca texto plano); el token se firma con `SECRET_KEY`. Hoy el login **no** protege el resto de los endpoints.
+- **Traducciones (CU-04):** solo para clientes `palabra`; `palabras_repetidas <= palabras_totales`.
+- **Cálculo y dashboard (CU-05/06/08):** toda la plata se calcula en `services/calculo_service.py` con `Decimal`; las horas `planificacion` nunca suman al monto. Mes con formato `YYYY-MM` (422 si no).
+- **Tarifario PDF (CU-07):** ReportLab, se genera en memoria y **no se guarda**.
+- **Lista de espera (CU-09):** email normalizado a minúsculas; duplicado -> 409; formato inválido -> 422.
+- **Asistente (CU-10):** RAG con LangChain + Chroma + Groq en `services/chatbot_service.py`. Conocimiento en `knowledge/*.md`. La clave `GROQ_API_KEY` solo en `.env`, nunca en el repo. En tests siempre se inyecta un LLM falso: los tests no deben llamar a Groq.

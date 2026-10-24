@@ -1,7 +1,6 @@
 ---
 description: Agente especializado en backend FastAPI para HorasClaras. Sigue estrictamente la arquitectura de 5 capas, SQLAlchemy 2.0.x, Pydantic v2 y las convenciones del proyecto.
 mode: subagent
-model: anthropic/claude-4-sonnet
 temperature: 0.1
 tools:
   read: true

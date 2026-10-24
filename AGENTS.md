@@ -2,6 +2,10 @@
 
 HorasClaras: gestión de horas y tarifas para profesionales freelance (profesoras de idiomas y traductoras).
 
+## Jerarquía de AGENTS.md
+
+Este archivo es el general. Para trabajar en una parte, leer además el específico: `app/AGENTS.md` (backend) o `frontend/AGENTS.md` (frontend). Los agentes `backend` y `frontend` de `.opencode/agents/` los siguen.
+
 ## Comandos
 
 Siempre con el venv local: `.\.venv\Scripts\python.exe` (o activarlo primero). Sin venv no están las dependencias.

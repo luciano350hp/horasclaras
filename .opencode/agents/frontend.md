@@ -1,7 +1,6 @@
 ---
 description: Agente especializado en frontend React + Vite para HorasClaras. Enfocado en UI limpia, consumo de API REST y buenas prácticas.
 mode: subagent
-model: anthropic/claude-4-sonnet
 temperature: 0.1
 tools:
   read: true

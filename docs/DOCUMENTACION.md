@@ -188,7 +188,7 @@ El curso evalúa trabajar con un **entorno asistido por IA**. Estas son las piez
 | Pieza | Qué es | Dónde está |
 |---|---|---|
 | **OpenCode** | El programa donde se conversa con la IA para que escriba y revise código | Se abre en la carpeta del proyecto |
-| **`AGENTS.md`** | Las "reglas de la casa" que la IA lee siempre antes de actuar | `AGENTS.md` y `app/AGENTS.md` |
+| **`AGENTS.md`** | Las "reglas de la casa" que la IA lee siempre antes de actuar | `AGENTS.md` (general), `app/AGENTS.md` (backend) y `frontend/AGENTS.md` (frontend) |
 | **Skills** | Instrucciones paso a paso para tareas repetibles, como "crear un caso de uso" | `.opencode/skills/` |
 | **Agentes** | IAs con un rol y permisos propios. `revisor` solo lee y audita; `backend` y `frontend` escriben | `.opencode/agents/` |
 | **Comandos** | Atajos para el flujo de OpenSpec (`/opsx-propose`, etc.) | `.opencode/commands/` |
@@ -225,6 +225,7 @@ horasclaras/
 │   ├── entities/          Capa 5: describe las tablas
 │   └── core/              Configuración y conexión a la base
 ├── frontend/              FRONTEND (pantallas React)
+│   ├── AGENTS.md          Reglas de la IA para el frontend
 │   └── src/pages/         Una pantalla por caso de uso
 ├── knowledge/             Documentos que lee el asistente
 ├── tests/                 Pruebas automáticas
@@ -271,6 +272,6 @@ horasclaras/
 - [`docs/producto/PRD.md`](producto/PRD.md): definición del producto: problema, usuaria, funcionalidades, métricas y restricciones.
 - [`docs/producto/DER.md`](producto/DER.md): modelo de datos propuesto (diagrama).
 - [`docs/producto/QA_bot.md`](producto/QA_bot.md): preguntas y respuestas de la versión prototipo (Lovable).
-- [`AGENTS.md`](../AGENTS.md) y [`app/AGENTS.md`](../app/AGENTS.md): reglas para la IA.
+- [`AGENTS.md`](../AGENTS.md) y [`app/AGENTS.md`](../app/AGENTS.md) y [`frontend/AGENTS.md`](../frontend/AGENTS.md): reglas para la IA, en jerarquía (general + backend + frontend).
 - [`README.md`](../README.md): resumen técnico y guía de arranque.
 - [`GUIA_VIDEO_PDF.md`](../GUIA_VIDEO_PDF.md): guion del video de entrega.
