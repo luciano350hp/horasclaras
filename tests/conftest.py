@@ -9,6 +9,7 @@ from sqlalchemy.pool import StaticPool
 from app.core.database import Base, get_db
 from app.entities import cliente as _cliente  # noqa: F401
 from app.entities import hora as _hora  # noqa: F401
+from app.entities import suscripcion as _s, traduccion as _t, usuario as _u  # noqa: F401
 from app.main import app
 
 

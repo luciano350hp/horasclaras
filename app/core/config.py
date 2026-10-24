@@ -12,6 +12,9 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    secret_key: str = "cambiar-en-produccion-usar-.env"
+    token_horas_validez: int = 24
+
     database_url: str = f"sqlite:///{BASE_DIR / 'horasclaras.db'}"
 
     @property

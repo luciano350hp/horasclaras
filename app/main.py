@@ -4,8 +4,13 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.controllers.auth_controller import router as auth_router
+from app.controllers.calculo_controller import router as calculo_router
 from app.controllers.cliente_controller import router as cliente_router
 from app.controllers.hora_controller import router as hora_router
+from app.controllers.suscripcion_controller import router as suscripcion_router
+from app.controllers.tarifario_controller import router as tarifario_router
+from app.controllers.traduccion_controller import router as traduccion_router
 from app.core.database import Base, engine
 
 
@@ -13,6 +18,8 @@ from app.core.database import Base, engine
 async def lifespan(_app: FastAPI) -> AsyncIterator[None]:
     from app.entities import cliente as _cliente  # noqa: F401
     from app.entities import hora as _hora  # noqa: F401
+
+    from app.entities import suscripcion as _s, traduccion as _t, usuario as _u  # noqa: F401
 
     Base.metadata.create_all(bind=engine)
     yield
@@ -35,6 +42,11 @@ app.add_middleware(
 
 app.include_router(cliente_router)
 app.include_router(hora_router)
+app.include_router(traduccion_router)
+app.include_router(calculo_router)
+app.include_router(tarifario_router)
+app.include_router(suscripcion_router)
+app.include_router(auth_router)
 
 
 @app.get("/health", tags=["sistema"])

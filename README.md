@@ -50,15 +50,15 @@ openspec/                   # specs (SDD)
 
 | CU | Descripción | Estado |
 |---|---|---|
-| CU-01 | Registro / login | pendiente |
-| CU-02 | Alta de cliente | **implementado** |
-| CU-03 | Registro de horas | **implementado** |
-| CU-04 | Contador de palabras y presupuesto | pendiente |
-| CU-05 | Horas no facturables | pendiente |
-| CU-06 | Cálculo del monto | pendiente |
-| CU-07 | Tarifario PDF | pendiente |
-| CU-08 | Dashboard mensual | pendiente |
-| CU-09 | Lista de espera | pendiente |
+| CU-01 | Registro / login | **implementado** (back + front) |
+| CU-02 | Alta de cliente | **implementado** (back + front) |
+| CU-03 | Registro de horas | **implementado** (back + front) |
+| CU-04 | Trabajo de traducción (palabras totales / repetidas) | **implementado** (back + front) |
+| CU-05 | Horas no facturables | **implementado** (back + front) |
+| CU-06 | Cálculo del monto por cliente y mes | **implementado** (back + front) |
+| CU-07 | Tarifario PDF | **implementado** (back + front) |
+| CU-08 | Dashboard mensual | **implementado** (back + front) |
+| CU-09 | Lista de espera | **implementado** (back + front) |
 | CU-10 | Asistente virtual (chatbot) | pendiente |
 
 ### Reglas de dominio
@@ -80,6 +80,18 @@ openspec/                   # specs (SDD)
 ```
 
 Docs interactivas de la API en http://127.0.0.1:8000/docs
+
+### Frontend (React + Vite)
+
+En otra terminal:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Abrir http://localhost:5173 (el backend tiene que estar corriendo en el puerto 8000). Pantallas: login/registro, dashboard, clientes, horas, traducciones, cobro del mes, tarifario PDF y lista de espera.
 
 ## Tests
 
@@ -113,6 +125,14 @@ DATABASE_URL=sqlite:///./horasclaras.db
 | POST | `/api/horas/` | Registrar una hora |
 | GET | `/api/horas/{id}` | Obtener una hora |
 | DELETE | `/api/horas/{id}` | Eliminar una hora |
+| GET/POST | `/api/traducciones/` | Listar / registrar un trabajo de traducción |
+| GET/DELETE | `/api/traducciones/{id}` | Obtener / eliminar |
+| GET | `/api/calculos/{YYYY-MM}` | Monto por cliente del mes (`cliente_id` opcional) |
+| GET | `/api/dashboard/{YYYY-MM}` | Totales y ranking del mes |
+| GET | `/api/tarifario/pdf` | Tarifario en PDF (se genera al vuelo, no se guarda) |
+| POST/GET | `/api/waitlist` | Anotarse en la lista de espera (409 si el email ya existe) |
+| POST | `/api/auth/registro` · `/api/auth/login` | Crear cuenta / obtener token |
+| GET | `/api/auth/me` | Usuario del token |
 
 ```json
 {

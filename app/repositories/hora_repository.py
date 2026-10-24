@@ -1,3 +1,5 @@
+from datetime import date
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -31,3 +33,7 @@ class HoraRepository:
     def eliminar(self, db: Session, hora: Hora) -> None:
         db.delete(hora)
         db.commit()
+
+    def listar_del_mes(self, db: Session, desde: date, hasta: date) -> list[Hora]:
+        stmt = select(Hora).where(Hora.fecha >= desde, Hora.fecha < hasta)
+        return list(db.execute(stmt).scalars().all())
