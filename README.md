@@ -6,6 +6,7 @@ Sistema de gestión de horas y tarifas para profesionales freelance (profesoras 
 
 El proyecto se desarrolla con **Spec-Driven Development (SDD)** y un entorno de contexto armado para el agente (reglas, skills, agentes y MCP). Las reglas de trabajo del agente están en `AGENTS.md`; las especificaciones de cada caso de uso, en `openspec/`.
 
+> 🚀 **Arranque en 10 minutos:** [`INICIO_RAPIDO.md`](INICIO_RAPIDO.md)
 > 📘 **Documentación completa en lenguaje simple:** [`docs/DOCUMENTACION.md`](docs/DOCUMENTACION.md)
 
 ## Stack
