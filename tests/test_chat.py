@@ -1,6 +1,10 @@
 import pytest
 from fastapi.testclient import TestClient
-from langchain_core.language_models.fake_chat_models import FakeListChatModel
+
+pytest.importorskip("langchain_core", reason="LangChain no esta instalado")
+pytest.importorskip("langchain_chroma", reason="langchain-chroma no esta instalado")
+
+from langchain_core.language_models.fake_chat_models import FakeListChatModel  # noqa: E402
 
 from app.controllers.chat_controller import get_chatbot
 from app.main import app

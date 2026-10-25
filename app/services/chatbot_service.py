@@ -3,14 +3,14 @@ import uuid
 from pathlib import Path
 
 from fastapi import HTTPException
-from langchain_core.embeddings import Embeddings
-from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from sqlalchemy.orm import Session
 
 from app.core.config import BASE_DIR, settings
 from app.dtos.chat_dto import ChatRequest, ChatResponse, MensajeRead
 from app.repositories.mensaje_chat_repository import MensajeChatRepository
 from app.services.embeddings_hash import HashEmbeddings
+
+# LangChain se importa recien al usar el asistente: si no esta instalado, el resto de la API anda igual.
 
 log = logging.getLogger(__name__)
 
@@ -28,7 +28,7 @@ DOCUMENTACIÓN:
 {contexto}"""
 
 
-def crear_embeddings() -> Embeddings:
+def crear_embeddings():
     """fastembed (multilingue, local). Si no se puede bajar el modelo, usa HashEmbeddings."""
     if settings.embeddings_backend == "fastembed":
         try:
@@ -45,7 +45,7 @@ def crear_embeddings() -> Embeddings:
 class ChatbotService:
     """RAG: busca fragmentos en la base vectorial (Chroma) y se los pasa al LLM (Groq)."""
 
-    def __init__(self, llm=None, embeddings: Embeddings | None = None, coleccion: str | None = None) -> None:
+    def __init__(self, llm=None, embeddings=None, coleccion: str | None = None) -> None:
         self._llm = llm
         self._embeddings = embeddings
         self._coleccion = coleccion
@@ -95,6 +95,13 @@ class ChatbotService:
 
     # --- caso de uso ---
     def responder(self, db: Session, datos: ChatRequest) -> ChatResponse:
+        try:
+            from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+        except ImportError as e:
+            raise HTTPException(
+                status_code=503,
+                detail="El asistente no esta instalado: corre pip install -r requirements.txt",
+            ) from e
         conversation_id = datos.conversation_id or uuid.uuid4().hex
         fragmentos = self.store.similarity_search(datos.mensaje, k=FRAGMENTOS)
         contexto = "\n\n---\n".join(f.page_content for f in fragmentos)

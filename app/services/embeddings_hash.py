@@ -3,8 +3,6 @@ import math
 import re
 import unicodedata
 
-from langchain_core.embeddings import Embeddings
-
 DIM = 512
 
 
@@ -16,8 +14,8 @@ def _tokens(texto: str) -> list[str]:
     return palabras + [f"{a}_{b}" for a, b in zip(palabras, palabras[1:])]
 
 
-class HashEmbeddings(Embeddings):
-    """Embeddings locales sin descargas: bolsa de palabras hasheada a 512 dimensiones.
+class HashEmbeddings:
+    """Embeddings locales sin descargas (no importa LangChain: cumple la interfaz por duck typing): bolsa de palabras hasheada a 512 dimensiones.
 
     Es el plan B cuando el modelo de fastembed no se puede bajar (sin internet o
     bloqueado). Busca por palabras compartidas, no por significado.
