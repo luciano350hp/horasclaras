@@ -1,170 +1,47 @@
-﻿# HorasClaras — Documento maestro del TP
+# Estado del proyecto y pendientes
 
-**Esto es tu mapa.** Un solo lugar con: qué pide el profe, qué tenés hecho, qué falta, qué mostrás en la demo y qué sigue. Nada más.
+> Actualizado el 25/10/2026. Para entender el proyecto completo: `docs/DOCUMENTACION.md`.
 
-Fecha entrega final: **27/10/2026**. Demo (no obligatoria): **semana del 20/10**.
+## Casos de uso: 10 de 10 (backend + frontend)
 
----
+| CU | Estado | Especificación OpenSpec |
+|---|---|---|
+| CU-01 Registro / login | ✅ | retroactiva |
+| CU-02 Alta de cliente | ✅ | retroactiva |
+| CU-03 Registro de horas | ✅ | **original** (spec antes del código) |
+| CU-04 Trabajo de traducción | ✅ | retroactiva |
+| CU-05 Horas no facturables | ✅ | retroactiva (incluida en cálculos) |
+| CU-06 Cálculo del monto | ✅ | retroactiva |
+| CU-07 Tarifario PDF | ✅ | retroactiva |
+| CU-08 Dashboard mensual | ✅ | retroactiva |
+| CU-09 Lista de espera | ✅ | retroactiva |
+| CU-10 Asistente virtual | ✅ (falta probar con clave real de Groq) | retroactiva |
 
-# PARTE 1 — Qué PIDE el profe (los 5 puntos del TP)
+76 tests en verde.
 
-Aprueba con **7 de 10 puntos**.
+## Puntaje del TP
 
-| # | Punto | Vale | Qué significa |
+| # | Qué se evalúa | Puntos | Estado |
 |---|---|---|---|
-| 1 | **Funcionalidad** | hasta 3 | Tener **≥7 de los 10 casos de uso** funcionando |
-| 2 | **AI Engineering** | hasta 3 | `AGENTS.md` + skills (`SKILL.md`) + SDD (`openspec/`) |
-| 3 | **README** | hasta 1 | Un README completo que explique todo |
-| 4 | **MCP** | hasta 1 | Mínimo 2 servidores MCP, al menos 1 externo |
-| 5 | **Chatbot LangChain** | hasta 2 | Asistente virtual con LangChain + Groq, integrado en la web |
+| 1 | Funcionalidad: ≥7 de 10 CU con front y back | 3 | 10/10 hechos |
+| 2 | Esquema de trabajo y AI Engineering | 3 | Armado; falta mostrarlo en el video |
+| 3 | README | 1 | Actualizado |
+| 4 | MCP (mín. 2, al menos 1 externo) | 1 | `filesystem`, `context7` (externo), `engram` |
+| 5 | Chatbot LangChain en la web | 2 | Implementado |
 
----
+## Pendientes
 
-# PARTE 2 — Los 10 Casos de Uso (CU)
+1. **Probar todo en la PC del autor** (`pytest`, servidor, pantallas, asistente con clave real de Groq).
+2. **Pasar la rama `cu-completos` a `main`.**
+3. **Hacer un caso de uso nuevo con OpenCode + OpenSpec en vivo** (spec primero) para mostrar SDD real en el video. Depende de que OpenCode vuelva a funcionar (ver el problema del cupo gratis; alternativa: clave propia de Groq).
+4. **Grabar el video** (10–15 min) con `GUIA_VIDEO_PDF.md`.
+5. **Armar el PDF de entrega** con los 10 CU, nombre, link del repo y link del video.
+6. Confirmar la fecha de entrega con el profesor.
+7. Agregar el bloque `github` al MCP (con token en variable de entorno) si se quiere un segundo MCP externo.
 
-| CU | Qué hace | Estado |
-|---|---|---|
-| CU-01 | Registro e inicio de sesión de usuaria | ❌ falta |
-| **CU-02** | **Alta de cliente** (tipo hora/palabra, tarifa, % descuento) | ✅ **HECHO** |
-| **CU-03** | **Registro de horas trabajadas por cliente** | ✅ **HECHO** |
-| CU-04 | Registro de traducción (palabras totales/repetidas) | ❌ falta |
-| CU-05 | Registro de horas no facturables (planificación) | ❌ falta |
-| CU-06 | Cálculo automático del monto por cliente/mes | ❌ falta |
-| CU-07 | Generación y descarga del tarifario mensual en PDF | ❌ falta |
-| CU-08 | Dashboard con resumen mensual | ❌ falta |
-| CU-09 | Suscripción a lista de espera (landing pública) | ❌ falta |
-| CU-10 | Consulta al asistente virtual (chatbot) | ❌ falta |
+## Límites conocidos (decirlos en el video)
 
-**Tenés 2 de 10.** Para el punto 1 necesitás **al menos 7**. Orden sugerido: CU-05 → CU-09 → CU-06 → CU-04 → CU-08.
-
----
-
-# PARTE 3 — Tu estado de puntaje (real)
-
-| # | Punto | Estado | Puntos |
-|---|---|---|---|
-| 1 | Funcionalidad | 2/10 CU | ⚠️ ~0.6 / 3 |
-| 2 | AI Engineering | ✅ completo | **3 / 3** |
-| 3 | README | ✅ completo | **1 / 1** |
-| 4 | MCP | ✅ 4 conectados | **1 / 1** |
-| 5 | Chatbot | ❌ nada | **0 / 2** |
-
-**Total asegurado: ~5.6 / 10.** Te faltan ~1.4 puntos para aprobar.
-**Cómo los sacás:** 2 casos de uso más (subís a 4/10 CU) **o** el chatbot (2 pts).
-
----
-
-# PARTE 4 — Qué MOSTRAR en la demo
-
-## Demo sin servidor (7 clicks en VS Code, siempre funciona)
-
-En la barra izquierda de VS Code, click en cada uno y decí la frase:
-
-| # | Abrí | Frase para decir |
-|---|---|---|
-| 1 | `README.md` | "El README: arquitectura, casos de uso y bitácora del entorno de IA." |
-| 2 | `AGENTS.md` | "El contexto del agente: las reglas que la IA lee siempre." |
-| 3 | `opencode.json` | "Los MCP: filesystem, engram, memory y context7, que es el externo." |
-| 4 | `.opencode/skills/` | "Skills: recetas que la IA usa sola cuando hace falta." |
-| 5 | `.opencode/agents/revisor.md` | "Un agente revisor: audita el código pero no puede modificarlo." |
-| 6 | `openspec/` | "SDD: las especificaciones antes del código." |
-| 7 | `app/` | "Arquitectura de 5 capas: controller, service, repository, entity y dto." |
-
-## Demo con servidor (opcional, si querés mostrar la API viva)
-
-**Primero encendé el servidor** en una consola PowerShell:
-
-```powershell
-cd C:\Users\Napo\Documents\HorasClaras
-.\.venv\Scripts\python.exe -m uvicorn app.main:app --reload
-```
-
-Va a quedar "colgado" mostrando `Application startup complete.` → **eso significa que está funcionando. NO cierres esa consola.**
-
-Después abrí el navegador en:
-
-```
-http://127.0.0.1:8000/docs
-```
-
-`/docs` es la página web con botones azules para probar la API. **No es un archivo**, existe solo mientras el servidor está encendido.
-
-Para apagarlo: en esa consola apretá `Ctrl + C`.
-
-## Demo de tests (opcional)
-
-En OTRA consola (el servidor sigue prendido en la primera):
-
-```powershell
-.\.venv\Scripts\python.exe -m pytest
-```
-
-Sale **44 passed**.
-
-## Frase de cierre
-
-> "El stack es React + Vite en el frontend, FastAPI + SQLAlchemy en el backend, SQLite, y para el chatbot LangChain con Groq. El entorno asistido por IA es OpenCode con AGENTS.md, skills, SDD y MCP. Ya tengo 2 casos de uso completos y voy por los siguientes."
-
----
-
-# PARTE 5 — Qué FALTA para la entrega final (27/10)
-
-Orden de prioridad:
-
-| Prioridad | Qué hacer | Por qué |
-|---|---|---|
-| 🔴 1 | **MCP de GitHub** | El TP nombra GitHub como MCP externo (tenés context7, que también sirve, pero GitHub es el del enunciado) |
-| 🔴 2 | **Chatbot LangChain + Groq** | Vale 2 puntos |
-| 🔴 3 | **Casos de uso hasta 7** | Vale hasta 3 puntos (tenés 2) |
-| 🔴 4 | **Frontend React + Vite** | El TP lo pide explícito |
-| 🟡 5 | CU-07 PDF con ReportLab | 1 caso de uso |
-
----
-
-# PARTE 6 — Dónde está cada cosa en tu proyecto
-
-```
-C:\Users\Napo\Documents\HorasClaras\
-│
-├── README.md                    ← punto 3 del TP
-├── AGENTS.md                    ← punto 2 (contexto del agente)
-├── DEMO.md                      ← TU chuleta (NO se muestra, es para vos)
-├── PENDIENTES.md                ← este documento
-├── opencode.json                ← punto 4 (MCP)
-│
-├── .opencode\
-│   ├── skills\                  ← punto 2 (skills)
-│   └── agents\revisor.md        ← punto 2 (agente)
-│
-├── openspec\                    ← punto 2 (SDD)
-│   └── changes\
-│       └── cu-03-registro-horas\    ← spec del CU-03
-│
-├── app\                         ← el código (5 capas)
-│   ├── entities\                ← tablas (SQLAlchemy)
-│   ├── dtos\                    ← datos que entran/salen (Pydantic)
-│   ├── repositories\            ← consultas a la base
-│   ├── services\                ← reglas de negocio
-│   ├── controllers\             ← endpoints HTTP
-│   ├── core\config.py           ← configuración
-│   └── main.py                  ← el "servidor" (se enciende con uvicorn)
-│
-└── tests\                       ← 44 tests que pasan
-```
-
----
-
-# PARTE 7 — Glosario (para no perderte)
-
-| Palabra | Qué es |
-|---|---|
-| **Servidor** | El programa que se enciende con el comando `uvicorn`. Mientras está prendido, `/docs` funciona. |
-| **`/docs`** | Página WEB con los endpoints para probar. No es un archivo. Necesita el servidor prendido. |
-| **MCP** | Servidor externo que le da herramientas a la IA. Tenés 4. |
-| **Skill** | Receta que la IA carga sola cuando la necesita. |
-| **Agente** | Un rol de IA con permisos limitados (ej: el revisor no puede modificar código). |
-| **SDD** | Especificar antes de programar. Va en `openspec/`. |
-| **CU** | Caso de uso. Son 10. Tenés 2 hechos. |
-| **Frontend** | La parte visual (React). Todavía no existe. |
-| **Chatbot** | El asistente virtual (CU-10). Todavía no existe. |
-| **RAG / base vectorial** | Técnica del chatbot para responder con TUS documentos. |
+- El login no separa los datos por usuario.
+- CORS abierto (`*`), para desarrollo.
+- SQLite de un solo archivo.
+- Las especificaciones de 8 de los 9 cambios archivados son retroactivas.

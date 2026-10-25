@@ -1,4 +1,6 @@
-﻿# Demo HorasClaras — Guion para la clase
+> ⚠️ **Documento histórico.** Es el guion de la demo del 20/10, escrito cuando solo estaban hechos CU-02 y CU-03 (44 tests). El estado actual está en `PENDIENTES.md` y el guion de entrega en `GUIA_VIDEO_PDF.md`.
+
+# Demo HorasClaras — Guion para la clase
 
 **TP: IA Engineering — Cohorte 2, UNLa**
 **Alumno: Luciano Napoleone**
