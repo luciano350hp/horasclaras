@@ -19,8 +19,8 @@ export default function Dashboard() {
         <>
           <div className="kpis">
             <div className="kpi"><small>Total facturado</small><b>{dinero(d.total_facturado)}</b></div>
-            <div className="kpi"><small>Horas facturables</small><b>{d.horas_facturables} min</b></div>
-            <div className="kpi"><small>Horas no facturables</small><b>{d.horas_no_facturables} min</b></div>
+            <div className="kpi"><small>Horas facturables</small><b>{d.horas_facturables} h</b></div>
+            <div className="kpi"><small>Horas no facturables</small><b>{d.horas_no_facturables} h</b></div>
             <div className="kpi"><small>Palabras traducidas</small><b>{d.palabras_traducidas}</b></div>
             <div className="kpi"><small>Mejor cliente</small><b>{d.mejor_cliente ?? "—"}</b></div>
           </div>
