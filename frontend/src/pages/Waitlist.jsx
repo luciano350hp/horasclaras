@@ -15,14 +15,14 @@ export default function Waitlist() {
   }
 
   return (
-    <form className="card" onSubmit={enviar}>
+    <div className="card">
       <h3>Lista de espera</h3>
-      <p>Anotá tu email para enterarte cuando salgan las novedades.</p>
-      <div className="fila">
+      <p className="nota">Anotá tu email para enterarte cuando salgan las novedades. Si el email ya está anotado, te avisa.</p>
+      <form className="fila" onSubmit={enviar} style={{ marginTop: 12 }}>
         <input type="email" placeholder="tu@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <button>Anotarme</button>
-      </div>
-      {msg.texto && <p className={msg.ok ? "ok" : "error"}>{msg.texto}</p>}
-    </form>
+      </form>
+      {msg.texto && <p className={msg.ok ? "ok" : "error"} style={{ marginTop: 12 }}>{msg.texto}</p>}
+    </div>
   );
 }

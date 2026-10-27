@@ -24,11 +24,11 @@ export default function Login({ onEntrar }) {
       <h1>HorasClaras</h1>
       <p>{modo === "login" ? "Ingresá a tu cuenta" : "Creá tu cuenta"}</p>
       <input type="email" placeholder="Email" value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} required />
-      <input type="password" placeholder="Contraseña (mín. 6)" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} required />
+      <input type="password" placeholder="Contraseña (mín. 6 caracteres)" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} required minLength={6} />
       {error && <p className="error">{error}</p>}
       <button>{modo === "login" ? "Entrar" : "Registrarme"}</button>
       <button type="button" className="sec" onClick={() => setModo(modo === "login" ? "registro" : "login")}>
-        {modo === "login" ? "No tengo cuenta" : "Ya tengo cuenta"}
+        {modo === "login" ? "No tengo cuenta → Registrarme" : "Ya tengo cuenta → Entrar"}
       </button>
     </form>
   );

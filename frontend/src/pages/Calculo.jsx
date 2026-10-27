@@ -12,19 +12,20 @@ export default function Calculo() {
   return (
     <>
       <div className="card fila">
-        <label>Mes <input type="month" value={mes} onChange={(e) => setMes(e.target.value)} /></label>
+        <label>Mes a consultar <input type="month" value={mes} onChange={(e) => setMes(e.target.value)} /></label>
       </div>
       {error && <p className="error">{error}</p>}
       {c && (
         <>
           <table>
-            <thead><tr><th>Cliente</th><th>Detalle</th><th>No facturable</th><th>Monto</th></tr></thead>
+            <thead><tr><th>Cliente</th><th>Tipo de cobro</th><th>Detalle del cálculo</th><th>No facturable</th><th>Monto a cobrar</th></tr></thead>
             <tbody>
               {c.clientes.map((f) => (
                 <tr key={f.cliente_id}>
-                  <td>{f.cliente}</td>
-                  <td>{f.tipo === "hora" ? `${(f.minutos_facturables / 60).toFixed(2)} h × ${dinero(f.tarifa)}` : `${f.palabras_totales} palabras (${f.palabras_repetidas} repetidas)`}</td>
-                  <td>{f.tipo === "hora" ? `${(f.minutos_no_facturables / 60).toFixed(2)} h` : "-"}</td>
+                  <td><b>{f.cliente}</b></td>
+                  <td><span className={"badge " + f.tipo}>{f.tipo === "hora" ? "🕐 Por hora" : "📝 Por palabra"}</span></td>
+                  <td>{f.tipo === "hora" ? `${(f.minutos_facturables / 60).toFixed(2)} h × tarifa` : `${f.palabras_totales} palabras (${f.palabras_repetidas} repetidas)`}</td>
+                  <td>{f.tipo === "hora" ? `${(f.minutos_no_facturables / 60).toFixed(2)} h` : "—"}</td>
                   <td><b>{dinero(f.monto)}</b></td>
                 </tr>
               ))}

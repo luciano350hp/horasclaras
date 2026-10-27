@@ -21,6 +21,17 @@ const TABS = [
   ["waitlist", "Lista de espera", Waitlist],
 ];
 
+const TITULOS = {
+  dashboard: "Dashboard mensual",
+  clientes: "Clientes",
+  horas: "Registro de horas",
+  traducciones: "Trabajos de traducción",
+  calculo: "Cobro del mes",
+  tarifario: "Tarifario en PDF",
+  asistente: "Asistente virtual",
+  waitlist: "Lista de espera",
+};
+
 export default function App() {
   const [usuario, setUsuario] = useState(null);
   const [tab, setTab] = useState("dashboard");
@@ -48,7 +59,10 @@ export default function App() {
           </button>
         ))}
       </nav>
-      <main><Pagina /></main>
+      <main>
+        <h2>{TITULOS[tab]}</h2>
+        <Pagina />
+      </main>
     </div>
   );
 }

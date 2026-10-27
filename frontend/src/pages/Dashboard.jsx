@@ -11,26 +11,32 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="card fila"><label>Mes <input type="month" value={mes} onChange={(e) => setMes(e.target.value)} /></label></div>
+      <div className="card fila">
+        <label>Mes a consultar <input type="month" value={mes} onChange={(e) => setMes(e.target.value)} /></label>
+      </div>
       {error && <p className="error">{error}</p>}
       {d && (
         <>
           <div className="kpis">
-            <div className="kpi"><small>Facturado</small><b>{dinero(d.total_facturado)}</b></div>
-            <div className="kpi"><small>Horas facturables</small><b>{d.horas_facturables}</b></div>
-            <div className="kpi"><small>Horas no facturables</small><b>{d.horas_no_facturables}</b></div>
+            <div className="kpi"><small>Total facturado</small><b>{dinero(d.total_facturado)}</b></div>
+            <div className="kpi"><small>Horas facturables</small><b>{d.horas_facturables} min</b></div>
+            <div className="kpi"><small>Horas no facturables</small><b>{d.horas_no_facturables} min</b></div>
             <div className="kpi"><small>Palabras traducidas</small><b>{d.palabras_traducidas}</b></div>
-            <div className="kpi"><small>Mejor cliente</small><b>{d.mejor_cliente ?? "-"}</b></div>
+            <div className="kpi"><small>Mejor cliente</small><b>{d.mejor_cliente ?? "—"}</b></div>
           </div>
           <div className="card">
             <h3>Facturación por cliente</h3>
-            {d.clientes.map((c) => (
-              <div key={c.cliente_id} className="barra">
-                <span>{c.cliente}</span>
-                <div><i style={{ width: `${(Number(c.monto) / max) * 100}%` }} /></div>
-                <span>{dinero(c.monto)}</span>
-              </div>
-            ))}
+            {d.clientes.length === 0 ? (
+              <div className="vacio"><b>Sin datos</b>No hay actividad registrada para este mes.</div>
+            ) : (
+              d.clientes.map((c) => (
+                <div key={c.cliente_id} className="barra">
+                  <span>{c.cliente}</span>
+                  <div><i style={{ width: `${(Number(c.monto) / max) * 100}%` }} /></div>
+                  <span>{dinero(c.monto)}</span>
+                </div>
+              ))
+            )}
           </div>
         </>
       )}
