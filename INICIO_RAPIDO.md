@@ -12,7 +12,7 @@ En VS Code: Archivo → Abrir carpeta → `C:\Users\Napo\Documents\HorasClaras`.
 Menú Terminal → Nueva terminal. Corré:
 ```powershell
 git fetch
-git checkout cu-completos
+git checkout main
 git pull
 ```
 

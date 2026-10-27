@@ -1,6 +1,6 @@
 # Estado del proyecto y pendientes
 
-> Actualizado el 25/10/2026. Para entender el proyecto completo: `docs/DOCUMENTACION.md`.
+> Actualizado el 27/10/2026. Para entender el proyecto completo: `docs/DOCUMENTACION.md`.
 
 ## Casos de uso: 10 de 10 (backend + frontend)
 
@@ -15,7 +15,7 @@
 | CU-07 Tarifario PDF | ✅ | retroactiva |
 | CU-08 Dashboard mensual | ✅ | retroactiva |
 | CU-09 Lista de espera | ✅ | retroactiva |
-| CU-10 Asistente virtual | ✅ (falta probar con clave real de Groq) | retroactiva |
+| CU-10 Asistente virtual | ✅ (probado con clave real de Groq: funciona) | retroactiva |
 
 76 tests en verde.
 
@@ -31,8 +31,8 @@
 
 ## Pendientes
 
-1. **Probar todo en la PC del autor** (`pytest`, servidor, pantallas, asistente con clave real de Groq).
-2. **Pasar la rama `cu-completos` a `main`.**
+1. ~~**Probar todo en la PC del autor**~~ ✅ hecho (pytest 76/76, servidor, pantallas, asistente con clave real de Groq).
+2. ~~**Pasar la rama `cu-completos` a `main`**~~ ✅ `main` ya tiene todo (la única diferencia con `cu-completos` es el `.gitignore`).
 3. **Hacer un caso de uso nuevo con OpenCode + OpenSpec en vivo** (spec primero) para mostrar SDD real en el video. Depende de que OpenCode vuelva a funcionar (ver el problema del cupo gratis; alternativa: clave propia de Groq).
 4. **Grabar el video** (10–15 min) con `GUIA_VIDEO_PDF.md`.
 5. **Armar el PDF de entrega** con los 10 CU, nombre, link del repo y link del video.

@@ -94,7 +94,7 @@ npm install
 npm run dev
 ```
 
-Abrir http://localhost:5173 (el backend tiene que estar corriendo en el puerto 8000). Pantallas: login/registro, dashboard, clientes, horas, traducciones, cobro del mes, tarifario PDF y lista de espera.
+Abrir http://localhost:5173 (el backend tiene que estar corriendo en el puerto 8000). Pantallas: login/registro, dashboard, clientes, horas, traducciones, cobro del mes, tarifario PDF, lista de espera y asistente.
 
 ## Asistente virtual (CU-10)
 
