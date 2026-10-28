@@ -2,7 +2,9 @@
 
 > Actualizado el 27/10/2026. Para entender el proyecto completo: `docs/DOCUMENTACION.md`.
 
-## Casos de uso: 10 de 10 (backend + frontend)
+## Casos de uso: 10 de 10 + CU-11 (backend + frontend)
+
+CU-11 Presupuesto de traducción (agregado el 28/10 con la spec escrita antes del código: `openspec/changes/2026-10-28-cu-11-presupuesto/`).
 
 | CU | Estado | Especificación OpenSpec |
 |---|---|---|

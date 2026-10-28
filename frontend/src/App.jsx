@@ -3,6 +3,7 @@ import { api } from "./api.js";
 import Clientes from "./pages/Clientes.jsx";
 import Horas from "./pages/Horas.jsx";
 import Traducciones from "./pages/Traducciones.jsx";
+import Presupuesto from "./pages/Presupuesto.jsx";
 import Calculo from "./pages/Calculo.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Tarifario from "./pages/Tarifario.jsx";
@@ -15,6 +16,7 @@ const TABS = [
   ["clientes", "Clientes", Clientes],
   ["horas", "Horas", Horas],
   ["traducciones", "Traducciones", Traducciones],
+  ["presupuesto", "Presupuesto", Presupuesto],
   ["calculo", "Cobro del mes", Calculo],
   ["tarifario", "Tarifario PDF", Tarifario],
   ["asistente", "Asistente", Asistente],
@@ -26,6 +28,7 @@ const TITULOS = {
   clientes: "Clientes",
   horas: "Registro de horas",
   traducciones: "Trabajos de traducción",
+  presupuesto: "Presupuesto de traducción",
   calculo: "Cobro del mes",
   tarifario: "Tarifario en PDF",
   asistente: "Asistente virtual",

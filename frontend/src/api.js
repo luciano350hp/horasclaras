@@ -29,6 +29,7 @@ export const api = {
   traducciones: () => pedir("/api/traducciones/"),
   crearTraduccion: (d) => post("/api/traducciones/", d),
   borrarTraduccion: (id) => pedir(`/api/traducciones/${id}`, { method: "DELETE" }),
+  presupuesto: (d) => post("/api/presupuestos", d),
   calculo: (mes) => pedir(`/api/calculos/${mes}`),
   dashboard: (mes) => pedir(`/api/dashboard/${mes}`),
   chat: (mensaje, conversation_id) => post("/api/chat", { mensaje, conversation_id }),

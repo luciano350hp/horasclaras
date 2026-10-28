@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.controllers.auth_controller import router as auth_router
 from app.controllers.calculo_controller import router as calculo_router
+from app.controllers.presupuesto_controller import router as presupuesto_router
 from app.controllers.chat_controller import router as chat_router
 from app.controllers.cliente_controller import router as cliente_router
 from app.controllers.hora_controller import router as hora_router
@@ -45,6 +46,7 @@ app.include_router(cliente_router)
 app.include_router(hora_router)
 app.include_router(traduccion_router)
 app.include_router(calculo_router)
+app.include_router(presupuesto_router)
 app.include_router(tarifario_router)
 app.include_router(suscripcion_router)
 app.include_router(auth_router)

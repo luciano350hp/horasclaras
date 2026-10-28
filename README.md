@@ -63,6 +63,7 @@ openspec/                   # specs (SDD)
 | CU-08 | Dashboard mensual | **implementado** (back + front) |
 | CU-09 | Lista de espera | **implementado** (back + front) |
 | CU-10 | Asistente virtual (chatbot) | **implementado** (back + front) |
+| CU-11 | Presupuesto de traducción (pegar texto → conteo, repetidas y precio) | **implementado** (back + front, spec primero) |
 
 ### Reglas de dominio
 
@@ -143,6 +144,7 @@ DATABASE_URL=sqlite:///./horasclaras.db
 | DELETE | `/api/horas/{id}` | Eliminar una hora |
 | GET/POST | `/api/traducciones/` | Listar / registrar un trabajo de traducción |
 | GET/DELETE | `/api/traducciones/{id}` | Obtener / eliminar |
+| POST | `/api/presupuestos` | Presupuesto de un texto pegado (`texto`, `cliente_id`); no guarda nada |
 | GET | `/api/calculos/{YYYY-MM}` | Monto por cliente del mes (`cliente_id` opcional) |
 | GET | `/api/dashboard/{YYYY-MM}` | Totales y ranking del mes |
 | GET | `/api/tarifario/pdf` | Tarifario en PDF (se genera al vuelo, no se guarda) |
