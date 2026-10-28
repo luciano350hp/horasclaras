@@ -1,6 +1,6 @@
 # Guion para video (10-15 minutos) + PDF de entrega
 
-> Estado: 10 de 10 casos de uso con backend y frontend, 76 tests en verde. Documentación completa en `docs/DOCUMENTACION.md`.
+> Estado: 11 de 11 casos de uso con backend y frontend, 84 tests en verde. Documentación completa en `docs/DOCUMENTACION.md`.
 
 ## VIDEO (10-15 min) — YouTube (sin listar) o Google Drive
 
@@ -30,11 +30,12 @@ Pantallas (terminal 2): `cd frontend` y `npm run dev` → http://localhost:5173
 - "Cobro del mes" y "Dashboard": explicar que la planificación no se cobra y el descuento solo afecta a las repetidas (CU-06, CU-08).
 - Descargar el tarifario PDF (CU-07).
 - Anotar un email en la lista de espera; repetirlo y mostrar el aviso de duplicado (CU-09).
+- Presupuesto de traducción: pegar un texto y ver palabras totales, repetidas y precio calculado (CU-11).
 - Preguntarle al asistente "¿cuántos clientes puedo tener?" (CU-10). Requiere `GROQ_API_KEY` en `.env`.
 - Mostrar la regla del cliente número 11 en http://127.0.0.1:8000/docs (409).
 
 ### 5) Tests y cierre (1-2 min)
-`.\.venv\Scripts\python.exe -m pytest` → **76 passed**.
+`.\.venv\Scripts\python.exe -m pytest` → **84 passed**.
 Mostrar GitHub: https://github.com/luciano350hp/horasclaras
 Decir con claridad qué se hizo con qué herramienta (ver `docs/DOCUMENTACION.md`, sección 9) y qué falta: el login todavía no separa los datos por usuario.
 
@@ -51,7 +52,7 @@ Portada
 - Video: [pegar el link de YouTube o Drive]
 
 Contenido:
-1. Los 10 casos de uso, todos implementados con backend y frontend:
+1. Los 11 casos de uso, todos implementados con backend y frontend:
 
 | CU | Nombre |
 |---|---|
@@ -65,7 +66,8 @@ Contenido:
 | CU-08 | Dashboard mensual |
 | CU-09 | Lista de espera |
 | CU-10 | Asistente virtual (LangChain + Groq + Chroma) |
+| CU-11 | Presupuesto de traducción (pegar texto, contar palabras, repetidas y precio) |
 
 2. Stack: FastAPI + SQLAlchemy + SQLite; React + Vite; LangChain + Groq + Chroma; OpenCode, AGENTS.md, skills, agentes, OpenSpec, MCP.
 3. Esquema de trabajo con IA: jerarquía de AGENTS.md, skills, agentes, SDD, MCP (explicar qué se hizo con OpenCode y qué con otra herramienta).
-4. Estado: 76 tests, documentación completa en `docs/DOCUMENTACION.md`, límites conocidos.
+4. Estado: 84 tests, documentación completa en `docs/DOCUMENTACION.md`, límites conocidos.
