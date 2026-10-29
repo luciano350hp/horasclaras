@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { api } from "../api.js";
-import { useLista } from "../hooks.js";
+import { fechaLocal, useLista } from "../hooks.js";
 
 export default function Traducciones() {
   const clientes = useLista(api.clientes);
   const trads = useLista(api.traducciones);
-  const [f, setF] = useState({ cliente_id: "", fecha: new Date().toISOString().slice(0, 10), palabras_totales: "", palabras_repetidas: 0, descripcion: "" });
+  const [f, setF] = useState({ cliente_id: "", fecha: fechaLocal(), palabras_totales: "", palabras_repetidas: 0, descripcion: "" });
   const [error, setError] = useState("");
   const porPalabra = clientes.datos.filter((c) => c.tipo === "palabra");
   const nombre = (id) => clientes.datos.find((c) => c.id === id)?.nombre ?? id;

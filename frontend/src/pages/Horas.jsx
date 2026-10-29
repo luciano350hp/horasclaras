@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { api } from "../api.js";
-import { useLista } from "../hooks.js";
+import { fechaLocal, useLista } from "../hooks.js";
 
 export default function Horas() {
   const clientes = useLista(api.clientes);
   const horas = useLista(api.horas);
-  const [f, setF] = useState({ cliente_id: "", fecha: new Date().toISOString().slice(0, 10), horas: 1, tipo: "facturable", observacion: "" });
+  const [f, setF] = useState({ cliente_id: "", fecha: fechaLocal(), horas: 1, tipo: "facturable", observacion: "" });
   const [error, setError] = useState("");
   const porHora = clientes.datos.filter((c) => c.tipo === "hora");
   const nombre = (id) => clientes.datos.find((c) => c.id === id)?.nombre ?? id;

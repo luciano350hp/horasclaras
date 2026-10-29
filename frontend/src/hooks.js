@@ -9,5 +9,12 @@ export function useLista(cargar) {
   return { datos, error, setError, recargar };
 }
 
-export const mesActual = () => new Date().toISOString().slice(0, 7);
+export const fechaLocal = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
+export const mesActual = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+};
 export const dinero = (v) => `$ ${Number(v).toLocaleString("es-AR", { minimumFractionDigits: 2 })}`;
