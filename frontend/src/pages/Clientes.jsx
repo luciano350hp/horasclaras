@@ -57,7 +57,7 @@ export default function Clientes() {
       <div className="card" style={{ background: "#f9fafb", padding: 14 }}>
         <p style={{ margin: 0, fontSize: 13, color: "var(--tinta-suave)" }}>
           <b style={{ color: "var(--tinta)" }}>Tipos de cliente:</b>{" "}
-          <span className="badge hora" style={{ marginLeft: 6 }}>🕐 Por hora</span> = clases (se cobra por minutos trabajados) &nbsp;·&nbsp;
+          <span className="badge hora" style={{ marginLeft: 6 }}>🕐 Por hora</span> = clases (se cobra por horas trabajadas) &nbsp;·&nbsp;
           <span className="badge palabra" style={{ marginLeft: 6 }}>📝 Por palabra</span> = traducciones (se cobra por palabras, con descuento en las repetidas)
         </p>
       </div>
