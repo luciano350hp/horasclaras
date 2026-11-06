@@ -8,7 +8,7 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
-from app.dtos.auth_dto import Credenciales, TokenRead, UsuarioRead
+from app.dtos.auth_dto import Credenciales, ResetPassword, TokenRead, UsuarioRead
 from app.repositories.usuario_repository import UsuarioRepository
 
 ITERACIONES = 120_000
@@ -62,6 +62,12 @@ class AuthService:
         if u is None or not verificar(datos.password, u.password_hash):
             raise HTTPException(status_code=401, detail="Email o contrasena incorrectos")
         return TokenRead(access_token=crear_token(u.id))
+
+    def resetear_password(self, db: Session, datos: ResetPassword) -> UsuarioRead:
+        u = self.repository.actualizar_password(db, datos.email, hashear(datos.password))
+        if u is None:
+            raise HTTPException(status_code=404, detail="No existe una cuenta con ese email")
+        return UsuarioRead.model_validate(u)
 
     def usuario_actual(self, db: Session, token: str) -> UsuarioRead:
         uid = leer_token(token)

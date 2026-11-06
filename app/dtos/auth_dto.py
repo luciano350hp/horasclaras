@@ -10,6 +10,13 @@ class Credenciales(BaseModel):
     _email = field_validator("email")(validar_email)
 
 
+class ResetPassword(BaseModel):
+    email: str
+    password: str = Field(min_length=6, max_length=100)
+
+    _email = field_validator("email")(validar_email)
+
+
 class UsuarioRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 

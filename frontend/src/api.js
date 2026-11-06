@@ -19,6 +19,7 @@ const post = (ruta, datos) => pedir(ruta, { method: "POST", body: JSON.stringify
 export const api = {
   registro: (d) => post("/api/auth/registro", d),
   login: (d) => post("/api/auth/login", d),
+  resetPassword: (d) => post("/api/auth/reset-password", d),
   me: () => pedir("/api/auth/me"),
   clientes: () => pedir("/api/clientes/"),
   crearCliente: (d) => post("/api/clientes/", d),

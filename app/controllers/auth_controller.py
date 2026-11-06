@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, Header, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
-from app.dtos.auth_dto import Credenciales, TokenRead, UsuarioRead
+from app.dtos.auth_dto import Credenciales, ResetPassword, TokenRead, UsuarioRead
 from app.services.auth_service import AuthService
 
 router = APIRouter(prefix="/api/auth", tags=["autenticacion"])
@@ -17,6 +17,11 @@ def registro(datos: Credenciales, db: Session = Depends(get_db)) -> UsuarioRead:
 @router.post("/login", response_model=TokenRead)
 def login(datos: Credenciales, db: Session = Depends(get_db)) -> TokenRead:
     return service.login(db, datos)
+
+
+@router.post("/reset-password", response_model=UsuarioRead)
+def reset_password(datos: ResetPassword, db: Session = Depends(get_db)) -> UsuarioRead:
+    return service.resetear_password(db, datos)
 
 
 @router.get("/me", response_model=UsuarioRead)

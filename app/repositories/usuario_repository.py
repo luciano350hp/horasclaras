@@ -17,3 +17,12 @@ class UsuarioRepository:
         db.commit()
         db.refresh(u)
         return u
+
+    def actualizar_password(self, db: Session, email: str, password_hash: str) -> Usuario | None:
+        u = self.obtener_por_email(db, email)
+        if u is None:
+            return None
+        u.password_hash = password_hash
+        db.commit()
+        db.refresh(u)
+        return u
