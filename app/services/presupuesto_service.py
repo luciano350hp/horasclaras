@@ -18,29 +18,20 @@ def contar_palabras(texto: str) -> int:
 
 
 def analizar(texto: str) -> tuple[int, int, list[str]]:
-    """Devuelve (palabras totales, palabras repetidas, segmentos repetidos).
+    """Devuelve (palabras totales, palabras repetidas, palabras que se repiten).
 
-    Un segmento (frase o linea) es repetido si, ignorando mayusculas y espacios
-    extra, ya aparecio antes. Se cuentan como repetidas las palabras de las
-    apariciones posteriores a la primera.
+    Se cuentan como repetidas las apariciones posteriores a la primera de cada
+    palabra (ignorando mayusculas). Por ejemplo, en "hola hola hola" hay 3
+    palabras totales y 2 repetidas.
     """
-    vistos: set[str] = set()
-    repetidos: list[str] = []
-    totales = 0
-    repetidas = 0
-    for seg in SEGMENTOS.split(texto):
-        seg = seg.strip()
-        n = contar_palabras(seg)
-        if n == 0:
-            continue
-        totales += n
-        clave = " ".join(seg.lower().split())
-        if clave in vistos:
-            repetidas += n
-            if seg not in repetidos:
-                repetidos.append(seg)
-        else:
-            vistos.add(clave)
+    palabras = PALABRA.findall(texto)
+    totales = len(palabras)
+    conteo: dict[str, int] = {}
+    for p in palabras:
+        clave = p.lower()
+        conteo[clave] = conteo.get(clave, 0) + 1
+    repetidas = sum(c - 1 for c in conteo.values() if c > 1)
+    repetidos = sorted({p.lower() for p in palabras if conteo[p.lower()] > 1})
     return totales, repetidas, repetidos
 
 

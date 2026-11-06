@@ -18,10 +18,10 @@ def test_contar_palabras_ignora_puntuacion() -> None:
     assert contar_palabras("Hola, mundo! Don't stop... 2026") == 5
 
 
-def test_analizar_detecta_frase_repetida_sin_importar_mayusculas() -> None:
-    totales, repetidas, segmentos = analizar("Hola mundo. hola   MUNDO. Adios.")
+def test_analizar_detecta_palabra_repetida_sin_importar_mayusculas() -> None:
+    totales, repetidas, terminos = analizar("Hola mundo. hola   MUNDO. Adios.")
     assert (totales, repetidas) == (5, 2)
-    assert segmentos == ["hola   MUNDO."]
+    assert terminos == ["hola", "mundo"]
 
 
 def test_presupuesto_sin_repeticiones(client: TestClient) -> None:

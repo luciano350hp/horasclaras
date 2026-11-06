@@ -58,7 +58,7 @@ export default function Presupuesto() {
           <p className="total">Precio: {dinero(r.monto)}</p>
           {r.segmentos_repetidos.length > 0 && (
             <>
-              <h3>Frases repetidas detectadas</h3>
+              <h3>Palabras repetidas detectadas</h3>
               <ul>{r.segmentos_repetidos.map((s, i) => <li key={i}>{s}</li>)}</ul>
             </>
           )}
