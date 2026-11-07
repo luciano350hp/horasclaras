@@ -9,9 +9,42 @@ El proyecto se desarrolla con **Spec-Driven Development (SDD)** y un entorno de 
 > 🚀 **Arranque en 10 minutos:** [`INICIO_RAPIDO.md`](INICIO_RAPIDO.md)
 > 📘 **Documentación completa en lenguaje simple:** [`docs/DOCUMENTACION.md`](docs/DOCUMENTACION.md)
 
-## Stack
+## Stack y tecnologías
+
+### Backend (`app/`)
 
 Python 3.14 · FastAPI · SQLAlchemy 2.0 · SQLite · Pydantic v2 · pytest
+
+| Tecnología | Para qué se usa |
+|---|---|
+| **Python 3.14** | Lenguaje del servidor. |
+| **FastAPI** | Framework web. Define las rutas HTTP (`/api/...`), valida los pedidos y genera sola la documentación interactiva en `/docs`. |
+| **SQLAlchemy 2.0** | ORM: permite trabajar con clases de Python (entidades) en vez de escribir SQL a mano. Fijada en `>=2.0,<2.1` por un problema de Windows (ver *Iteraciones y problemas resueltos*). |
+| **SQLite** | Base de datos en un único archivo (`horasclaras.db`), sin servidor aparte. Guarda clientes, horas, traducciones, usuarios, lista de espera y mensajes del chat. |
+| **Pydantic v2** | Define los DTO: qué datos entran y salen de cada endpoint y cómo se validan. También lee la configuración del `.env`. |
+| **ReportLab** | Genera el tarifario en PDF. |
+| **pytest** | Pruebas automáticas de cada caso de uso (caso feliz y errores 404, 409 y 422). |
+
+### Frontend (`frontend/`)
+
+React 18 · Vite 5 · JavaScript
+
+| Tecnología | Para qué se usa |
+|---|---|
+| **React 18** | Librería para armar las pantallas como componentes. Hay una pantalla por caso de uso en `src/pages/` y la navegación por pestañas está en `App.jsx`. |
+| **Vite 5** | Herramienta de desarrollo: levanta el servidor local (`npm run dev`, puerto 5173) y arma la versión final (`npm run build`). |
+| **`src/api.js`** | Único archivo que le habla al backend con `fetch`. Las pantallas no llaman a la API directamente. |
+| **`src/styles.css`** | Todos los estilos, con variables CSS. No usa librerías de estilos. |
+
+El frontend solo muestra datos y manda formularios: las reglas de negocio (límite de clientes, cálculo de montos) viven en el backend.
+
+### Asistente virtual (CU-10)
+
+LangChain · Groq · Chroma · fastembed. El detalle está en la sección *Asistente virtual (CU-10)* más abajo.
+
+### Trabajo con IA
+
+OpenCode · `AGENTS.md` · agentes y skills propios · OpenSpec (SDD) · MCP (filesystem, context7 y engram). El detalle está en *AI Engineering (bitácora del proceso)*.
 
 ## Arquitectura
 
